@@ -91,7 +91,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel3.add(cmbCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        cmbLlenaManual.setBackground(new java.awt.Color(51, 51, 51));
+        cmbLlenaManual.setBackground(new java.awt.Color(0, 0, 0));
         cmbLlenaManual.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmbLlenaManual.setForeground(new java.awt.Color(255, 255, 255));
         cmbLlenaManual.setText("Llenar Manueal");
@@ -115,7 +115,7 @@ public class Principal extends javax.swing.JFrame {
         cmbBorrar.setText("Borrar");
         jPanel3.add(cmbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 170, 260));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 170, 260));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
 
@@ -128,14 +128,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 200, 160));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,22 +161,23 @@ public class Principal extends javax.swing.JFrame {
         if(txtLongitud.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this,"Digite La Longitud","Error",JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
-        }else if(txtLongitud.getText().trim().equals("0")){
-            JOptionPane.showMessageDialog(this,"La Longitud No Puede Ser 0","Error",JOptionPane.ERROR_MESSAGE);
+        }else if (Integer.parseInt(txtLongitud.getText().trim())==0) {
+            JOptionPane.showMessageDialog(this, "La longitud no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
-            txtLongitud.selectAll();
-        }
+             txtLongitud.selectAll();}
+        
+        
         
         
     }//GEN-LAST:event_cmbCrearActionPerformed
 
     private void txtLongitudKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLongitudKeyTyped
        char c=evt.getKeyChar(); 
-              
-          
+
            if(!Character.isDigit(c)) { 
                getToolkit().beep(); 
                evt.consume();}
+           
     }//GEN-LAST:event_txtLongitudKeyTyped
 
     /**
