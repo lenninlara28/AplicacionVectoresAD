@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    double v[];
     public Principal() {
         initComponents();
     }
@@ -94,25 +95,45 @@ public class Principal extends javax.swing.JFrame {
         cmbLlenaManual.setBackground(new java.awt.Color(0, 0, 0));
         cmbLlenaManual.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmbLlenaManual.setForeground(new java.awt.Color(255, 255, 255));
-        cmbLlenaManual.setText("Llenar Manueal");
+        cmbLlenaManual.setText("Llenar Manual");
+        cmbLlenaManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLlenaManualActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbLlenaManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         cmbAutomatico.setBackground(new java.awt.Color(0, 0, 0));
         cmbAutomatico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmbAutomatico.setForeground(new java.awt.Color(255, 255, 255));
         cmbAutomatico.setText("Llenar Autumatico");
+        cmbAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAutomaticoActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         cmbMostrar.setBackground(new java.awt.Color(0, 0, 0));
         cmbMostrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmbMostrar.setForeground(new java.awt.Color(255, 255, 255));
         cmbMostrar.setText("Mostrar");
+        cmbMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMostrarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         cmbBorrar.setBackground(new java.awt.Color(0, 0, 0));
         cmbBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmbBorrar.setForeground(new java.awt.Color(255, 255, 255));
         cmbBorrar.setText("Borrar");
+        cmbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBorrarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 170, 260));
@@ -158,6 +179,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLongitudActionPerformed
 
     private void cmbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCrearActionPerformed
+        int longitud;
         if(txtLongitud.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this,"Digite La Longitud","Error",JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
@@ -165,7 +187,11 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La longitud no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
              txtLongitud.selectAll();}
-        
+        else{
+            longitud=Integer.parseInt(txtLongitud.getText().trim());
+            v=new double[longitud];
+            JOptionPane.showMessageDialog(this, "Vector Creado Exitosamente");
+        }
         
         
         
@@ -179,6 +205,39 @@ public class Principal extends javax.swing.JFrame {
                evt.consume();}
            
     }//GEN-LAST:event_txtLongitudKeyTyped
+
+    private void cmbLlenaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenaManualActionPerformed
+        double n;
+        for (int i=0;i<v.length;i++){
+            n= Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el Elemento EN La Posicion "+i));
+            v[i]=n;
+        }
+    
+    }//GEN-LAST:event_cmbLlenaManualActionPerformed
+
+    private void cmbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMostrarActionPerformed
+        for (int i = 0; i < v.length; i++) {
+         txtResultado.append(v[i]+" \n ");
+        
+        }
+    }//GEN-LAST:event_cmbMostrarActionPerformed
+
+    private void cmbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBorrarActionPerformed
+       txtLongitud.setText("");
+       txtResultado.setText("");
+       v=null;
+       txtLongitud.requestFocusInWindow();
+       
+    }//GEN-LAST:event_cmbBorrarActionPerformed
+
+    private void cmbAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutomaticoActionPerformed
+        double n;
+        for (int i = 0; i < v.length; i++) {
+        n= (int)(Math.random()*50+1);
+        v[i]=n;
+         }
+        JOptionPane.showMessageDialog(this, "Vector Creado Exitosamente");
+    }//GEN-LAST:event_cmbAutomaticoActionPerformed
 
     /**
      * @param args the command line arguments
