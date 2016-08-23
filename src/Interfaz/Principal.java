@@ -6,6 +6,8 @@
 
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author llara11
@@ -65,6 +67,11 @@ public class Principal extends javax.swing.JFrame {
                 txtLongitudActionPerformed(evt);
             }
         });
+        txtLongitud.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLongitudKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 70, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 160, 70));
@@ -77,6 +84,11 @@ public class Principal extends javax.swing.JFrame {
         cmbCrear.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         cmbCrear.setForeground(new java.awt.Color(255, 255, 255));
         cmbCrear.setText("Crear");
+        cmbCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCrearActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         cmbLlenaManual.setBackground(new java.awt.Color(51, 51, 51));
@@ -107,6 +119,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
 
+        txtResultado.setEditable(false);
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
@@ -143,6 +156,28 @@ public class Principal extends javax.swing.JFrame {
     private void txtLongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongitudActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLongitudActionPerformed
+
+    private void cmbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCrearActionPerformed
+        if(txtLongitud.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite La Longitud","Error",JOptionPane.ERROR_MESSAGE);
+            txtLongitud.requestFocusInWindow();
+        }else if(txtLongitud.getText().trim().equals("0")){
+            JOptionPane.showMessageDialog(this,"La Longitud No Puede Ser 0","Error",JOptionPane.ERROR_MESSAGE);
+            txtLongitud.requestFocusInWindow();
+            txtLongitud.selectAll();
+        }
+        
+        
+    }//GEN-LAST:event_cmbCrearActionPerformed
+
+    private void txtLongitudKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLongitudKeyTyped
+       char c=evt.getKeyChar(); 
+              
+          
+           if(!Character.isDigit(c)) { 
+               getToolkit().beep(); 
+               evt.consume();}
+    }//GEN-LAST:event_txtLongitudKeyTyped
 
     /**
      * @param args the command line arguments
