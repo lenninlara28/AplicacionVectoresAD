@@ -98,7 +98,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtLongitud">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLongitudActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLongitudKeyTyped"/>
               </Events>
               <Constraints>

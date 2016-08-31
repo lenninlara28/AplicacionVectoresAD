@@ -20,6 +20,11 @@ public class Principal extends javax.swing.JFrame {
     double v[];
     public Principal() {
         initComponents();
+        cmbCrear.setEnabled(true);
+        cmbLlenaManual.setEnabled(false);
+         cmbAutomatico.setEnabled(false);
+         cmbMostrar.setEnabled(false);
+         cmbBorrar.setEnabled(true);
     }
 
     /**
@@ -56,18 +61,13 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(123, 224, 179));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Iniciales\n", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Iniciales\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel2.setText("Longitud:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        txtLongitud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLongitudActionPerformed(evt);
-            }
-        });
         txtLongitud.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLongitudKeyTyped(evt);
@@ -78,7 +78,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 160, 70));
 
         jPanel3.setBackground(new java.awt.Color(124, 226, 183));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 51, 51))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 51, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbCrear.setBackground(new java.awt.Color(0, 0, 0));
@@ -138,7 +138,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 170, 260));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
 
         txtResultado.setEditable(false);
         txtResultado.setColumns(20);
@@ -174,10 +174,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongitudActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLongitudActionPerformed
-
     private void cmbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCrearActionPerformed
         int longitud;
         if(txtLongitud.getText().trim().isEmpty()){
@@ -192,8 +188,12 @@ public class Principal extends javax.swing.JFrame {
             v=new double[longitud];
             JOptionPane.showMessageDialog(this, "Vector Creado Exitosamente");
         }
-        
-        
+        cmbCrear.setEnabled(false);
+        cmbLlenaManual.setEnabled(true);
+         cmbAutomatico.setEnabled(true);
+         cmbMostrar.setEnabled(false);
+         cmbBorrar.setEnabled(true);
+        txtLongitud.setEditable(false);
         
     }//GEN-LAST:event_cmbCrearActionPerformed
 
@@ -212,7 +212,11 @@ public class Principal extends javax.swing.JFrame {
             n= Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el Elemento EN La Posicion "+i));
             v[i]=n;
         }
-    
+    cmbCrear.setEnabled(false);
+        cmbLlenaManual.setEnabled(false);
+         cmbAutomatico.setEnabled(false);
+         cmbMostrar.setEnabled(true);
+         cmbBorrar.setEnabled(true);
     }//GEN-LAST:event_cmbLlenaManualActionPerformed
 
     private void cmbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMostrarActionPerformed
@@ -220,6 +224,11 @@ public class Principal extends javax.swing.JFrame {
          txtResultado.append(v[i]+" \n ");
         
         }
+        cmbCrear.setEnabled(false);
+        cmbLlenaManual.setEnabled(false);
+         cmbAutomatico.setEnabled(false);
+         cmbMostrar.setEnabled(false);
+         cmbBorrar.setEnabled(true);
     }//GEN-LAST:event_cmbMostrarActionPerformed
 
     private void cmbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBorrarActionPerformed
@@ -228,6 +237,12 @@ public class Principal extends javax.swing.JFrame {
        v=null;
        txtLongitud.requestFocusInWindow();
        
+      cmbCrear.setEnabled(true);
+        cmbLlenaManual.setEnabled(false);
+         cmbAutomatico.setEnabled(false);
+         cmbMostrar.setEnabled(false);
+         cmbBorrar.setEnabled(true);
+         txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmbBorrarActionPerformed
 
     private void cmbAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutomaticoActionPerformed
@@ -237,6 +252,11 @@ public class Principal extends javax.swing.JFrame {
         v[i]=n;
          }
         JOptionPane.showMessageDialog(this, "Vector Creado Exitosamente");
+        cmbCrear.setEnabled(false);
+        cmbLlenaManual.setEnabled(false);
+         cmbAutomatico.setEnabled(false);
+         cmbMostrar.setEnabled(true);
+         cmbBorrar.setEnabled(true);
     }//GEN-LAST:event_cmbAutomaticoActionPerformed
 
     /**
