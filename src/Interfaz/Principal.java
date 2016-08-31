@@ -209,6 +209,7 @@ public class Principal extends javax.swing.JFrame {
     private void cmbLlenaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenaManualActionPerformed
         double n;
         int sw,res;
+        boolean aux=true;
         for (int i=0;i<v.length;i++){
           do {
                  sw=1;
@@ -222,7 +223,8 @@ public class Principal extends javax.swing.JFrame {
                      res=JOptionPane.showConfirmDialog(this, "¿Seguro Desea Salir?","Salir",JOptionPane.YES_NO_OPTION);
                      if (res==0){
                          sw=1;
-                         i=v.length;}
+                         i=v.length;
+                         aux=(false);}
                      else {
                      sw=0;}
                  }
@@ -230,11 +232,11 @@ public class Principal extends javax.swing.JFrame {
             while (sw==0);
         }
     
-    cmbCrear.setEnabled(false);
+        cmbCrear.setEnabled(false);
         cmbLlenaManual.setEnabled(false);
-         cmbAutomatico.setEnabled(false);
-         cmbMostrar.setEnabled(true);
-         cmbBorrar.setEnabled(true);
+        cmbAutomatico.setEnabled(false);
+        cmbMostrar.setEnabled(aux);
+        cmbBorrar.setEnabled(true);
     }//GEN-LAST:event_cmbLlenaManualActionPerformed
 
     private void cmbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMostrarActionPerformed
