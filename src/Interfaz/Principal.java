@@ -208,23 +208,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmbLlenaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenaManualActionPerformed
         double n;
-        int sw;
+        int sw,res;
         for (int i=0;i<v.length;i++){
           do {
                  sw=1;
                  try {
                      n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elmento en la posición " + i));
-                     v[i] = n;
-                 } catch (NumberFormatException e) {
+                     v[i] = n;}
+                 catch (NumberFormatException e) {
                      JOptionPane.showMessageDialog(this, "Digite un número válido","Error",JOptionPane.ERROR_MESSAGE);
-                     sw=0;
-                 } catch (NullPointerException e) {
-                     JOptionPane.showMessageDialog(this, "No puedes salir","Error",JOptionPane.ERROR_MESSAGE);
-                     sw=0;
+                     sw=0;}
+                 catch (NullPointerException e) {
+                     res=JOptionPane.showConfirmDialog(this, "¿Seguro Desea Salir?","Salir",JOptionPane.YES_NO_OPTION);
+                     if (res==0){
+                         sw=1;
+                         i=v.length;}
+                     else {
+                     sw=0;}
                  }
-             } while (sw==0);
+          }
+            while (sw==0);
         }
-        
+    
     cmbCrear.setEnabled(false);
         cmbLlenaManual.setEnabled(false);
          cmbAutomatico.setEnabled(false);
